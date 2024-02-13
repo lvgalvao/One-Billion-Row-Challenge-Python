@@ -1,6 +1,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
+# Arquivo full
+.tmp
+measurements1M.txt
+measurements10M.txt
+measurements100M.txt
+measurements1B.txt
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
