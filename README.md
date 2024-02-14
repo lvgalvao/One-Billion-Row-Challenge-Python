@@ -1,14 +1,14 @@
-# Um do Bilhão de Linhas
+# Um Bilhão de Linhas: Desafio de Processamento de Dados com Python
 
-Como ler um arquivo de 1 bilhão de linhas (~14GB) , realizar um GROUP BY e um ORDER BY utilizando Python?
+## Introdução
 
-Esse código é uma implementação do [The One Billion Row Challenge:](https://github.com/gunnarmorling/1brc) realizado para Java
+O objetivo deste projeto é demonstrar como processar eficientemente um arquivo de dados massivo contendo 1 bilhão de linhas (~14GB), especificamente para calcular estatísticas (Incluindo agregação e ordenação que são operações pesadas) utilizando Python. 
 
-O arquivo em questão contém valores de temperatura para uma variedade de estações meteorológicas.
+Este desafio foi inspirado no [The One Billion Row Challenge](https://github.com/gunnarmorling/1brc), originalmente proposto para Java.
 
-Cada linha é uma medição no formato <string: nome da estação>;<double: medição>, com o valor da medição tendo exatamente uma casa decimal.
+O arquivo de dados consiste em medições de temperatura de várias estações meteorológicas. Cada registro segue o formato `<string: nome da estação>;<double: medição>`, com a temperatura sendo apresentada com precisão de uma casa decimal.
 
-A seguir, dez linhas como exemplo:
+Aqui estão dez linhas de exemplo do arquivo:
 
 ```
 Hamburg;12.0
@@ -23,45 +23,63 @@ Conakry;31.2
 Istanbul;23.0
 ```
 
-A tarefa é escrever um programa que leia o arquivo, calcule o valor mínimo, médio e máximo da temperatura por estação meteorológica e emita os resultados arredondados para uma casa decimal:
+O desafio é desenvolver um programa Python capaz de ler esse arquivo e calcular a temperatura mínima, média (arredondada para uma casa decimal) e máxima para cada estação, exibindo os resultados em uma tabela ordenada por nome da estação.
 
-| station      | min_temperature | mean_temperature | max_temperature |
-|--------------|-----------------|------------------|-----------------|
-| Abha         | -31.1           | 18.0             | 66.5            |
-| Abidjan      | -25.9           | 26.0             | 74.6            |
-| Abéché       | -19.8           | 29.4             | 79.9            |
-| Accra        | -24.8           | 26.4             | 76.3            |
-| Addis Ababa  | -31.8           | 16.0             | 63.9            |
-| Adelaide     | -31.8           | 17.3             | 71.5            |
-| Aden         | -19.6           | 29.1             | 78.3            |
-| Ahvaz        | -24.0           | 25.4             | 72.6            |
-| Albuquerque  | -35.0           | 14.0             | 61.9            |
-| Alexandra    | -40.1           | 11.0             | 67.9            |
-| ...          | ...             | ...              | ...             |
-| Yangon       | -23.6           | 27.5             | 77.3            |
-| Yaoundé      | -26.2           | 23.8             | 73.4            |
-| Yellowknife  | -53.4           | -4.3             | 46.7            |
-| Yerevan      | -38.6           | 12.4             | 62.8            |
-| Yinchuan     | -45.2           | 9.0              | 56.9            |
-| Zagreb       | -39.2           | 10.7             | 58.1            |
-| Zanzibar City| -26.5           | 26.0             | 75.2            |
-| Zürich       | -42.0           | 9.3              | 63.6            |
-| Ürümqi       | -42.1           | 7.4              | 56.7            |
-| İzmir        | -34.4           | 17.9             | 67.9            |
+## Dependências
 
-Meu objetivo com esse desafio era testar como o Python se comportaria utilizando de forma nativa, com Pandas, Polars e Duckdb.
+Para executar os scripts deste projeto, você precisará das seguintes bibliotecas:
 
-## Resultado
-Rodando no meu laptop, equipado com M1 (8 núcleos) da Apple e 8 GB RAM
+* Polars: `0.20.3`
+* DuckDB: `0.10.0`
 
+## Resultados
 
-| Implementação      | Tempo |
-|--------------|-------------|
-Python	| Não rodou
-Python + Pandas	| Não rodou
-Python + Polars |	33.86 sec
-Python + Duckdb	| 14.98 sec
+Os testes foram realizados em um laptop equipado com um processador M1 da Apple e 8GB de RAM. As implementações utilizaram abordagens puramente Python, Pandas, Polars e DuckDB. Os resultados de tempo de execução para processar o arquivo de 1 bilhão de linhas são apresentados abaixo:
 
-## Como executar
+| Implementação | Tempo |
+| --- | --- |
+| Python | Não rodou |
+| Python + Pandas | Não rodou |
+| Python + Polars | 33.86 sec |
+| Python + Duckdb | 14.98 sec |
 
+Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars
 
+## Conclusão
+
+Este desafio ilustrou claramente a capacidade de diferentes bibliotecas Python em lidar com grandes conjuntos de dados. Enquanto métodos convencionais como Python puro e Pandas não conseguiram processar o arquivo devido a limitações de memória ou desempenho, Polars e DuckDB mostraram-se excepcionalmente eficientes. O DuckDB se destacou, oferecendo o menor tempo de execução, graças à sua otimização para operações de banco de dados em grandes volumes de dados.
+
+Esses resultados enfatizam a importância de selecionar a ferramenta adequada para análise de dados em larga escala, demonstrando que Python, com as bibliotecas certas, é uma escolha poderosa para enfrentar desafios de big data.
+
+## Como Executar
+
+Para executar este projeto e reproduzir os resultados:
+
+1. Clone esse repositório
+2. Execute o comando `python src/create_measurements.py` para gerar o arquivo de teste
+3. Tenha paciência e vá fazer um café, vai demorar uns 10 minutos para gerar o arquivo
+4. Certifique-se de instalar as versões especificadas das bibliotecas Polars e DuckDB
+5. Execute os scripts `python src/using_polars.py` e `python src/using_duckdb.py` através de um terminal ou ambiente de desenvolvimento que suporte Python.
+
+Este projeto destaca a versatilidade do ecossistema Python para tarefas de processamento de dados, oferecendo valiosas lições sobre escolha de ferramentas para análises em grande escala.
+
+## Próximos passos
+
+Esse projeto faz parte da *Jornada de Dados*
+Nossa missão é fornecer o melhor ensino em engenharia de dados
+
+Se você quer:
+
+- Aprender sobre Duckdb e engenharia de dados
+- Construir uma base sólida em Python e SQL
+- Criar ou melhorar seu portfólio de dados
+- Criar ou aumentar o seu networking na área
+- Mudar ou dar o próximo passo em sua carreira
+
+A Jornada de Dados é o seu lugar
+
+![https://github.com/lvgalvao/data-engineering-roadmap/raw/main/pics/jornada.png](https://www.jornadadedados2024.com.br/workshops)
+
+Para entrar na lista de espera clique no botao
+
+![https://raw.githubusercontent.com/lvgalvao/data-engineering-roadmap/main/pics/lista_de_espera.png](https://forms.gle/hJMtRDP3MPBUGvwS7?orbt_src=orbt-vst-1RWyYmpICDu9gPknLgaD)
