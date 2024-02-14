@@ -2,6 +2,9 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
 # Arquivo full
+.DS_Store
+
+# Arquivo full
 .tmp
 measurements1M.txt
 measurements10M.txt
