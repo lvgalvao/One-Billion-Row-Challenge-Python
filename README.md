@@ -10,7 +10,7 @@ Cada linha é uma medição no formato <string: nome da estação>;<double: medi
 
 A seguir, dez linhas como exemplo:
 
-```json
+```
 Hamburg;12.0
 Bulawayo;8.9
 Palembang;38.8
@@ -54,7 +54,6 @@ Meu objetivo com esse desafio era testar como o Python se comportaria utilizando
 ## Resultado
 Rodando no meu laptop, equipado com M1 (8 núcleos) da Apple e 8 GB RAM
 
-Obs: O dataset em questão é maior do que minha memória, o que faz o
 
 | Implementação      | Tempo |
 |--------------|-------------|
@@ -62,3 +61,7 @@ Python	| Não rodou
 Python + Pandas	| Não rodou
 Python + Polars |	33.86 sec
 Python + Duckdb	| 14.98 sec
+
+## Como executar
+
+
