@@ -78,8 +78,8 @@ Se você quer:
 
 A Jornada de Dados é o seu lugar
 
-![https://github.com/lvgalvao/data-engineering-roadmap/raw/main/pics/jornada.png](https://www.jornadadedados2024.com.br/workshops)
+[![Imagem](https://github.com/lvgalvao/data-engineering-roadmap/raw/main/pics/jornada.png)](https://www.jornadadedados2024.com.br/workshops)
 
 Para entrar na lista de espera clique no botao
 
-![https://raw.githubusercontent.com/lvgalvao/data-engineering-roadmap/main/pics/lista_de_espera.png](https://forms.gle/hJMtRDP3MPBUGvwS7?orbt_src=orbt-vst-1RWyYmpICDu9gPknLgaD)
+[![Imagem](https://raw.githubusercontent.com/lvgalvao/data-engineering-roadmap/main/pics/lista_de_espera.png)](https://forms.gle/hJMtRDP3MPBUGvwS7?orbt_src=orbt-vst-1RWyYmpICDu9gPknLgaD)
