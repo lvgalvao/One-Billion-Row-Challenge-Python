@@ -4,15 +4,11 @@ version = "0.1.0"
 description = ""
 authors = ["Luciano Filho <lvgalvaofilho@gmail.com>"]
 readme = "README.md"
-packages = [{include = "one_billion_row_challenge_python"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-pandas = "^2.2.0"
-pyarrow = "^15.0.0"
-polars = "^0.20.7"
-duckdb = "^0.9.2"
-
+python = "3.12"
+polars = "0.20.3"
+duckdb = "0.10.0"
 
 [build-system]
 requires = ["poetry-core"]
