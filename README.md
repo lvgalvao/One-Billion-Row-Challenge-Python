@@ -74,7 +74,7 @@ Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Po
 
 ## Conclusão
 
-Este desafio ilustrou claramente a capacidade de diferentes bibliotecas Python em lidar com grandes conjuntos de dados. Enquanto métodos convencionais como Python puro e Pandas não conseguiram processar o arquivo devido a limitações de memória ou desempenho, Dask, Polars e DuckDB mostraram-se excepcionalmente eficientes. O DuckDB se destacou, oferecendo o menor tempo de execução, graças à sua otimização para operações de banco de dados em grandes volumes de dados.
+Este desafio destacou claramente a eficácia de diversas bibliotecas Python na manipulação de grandes volumes de dados. Métodos tradicionais como Bash (25 minutos), Python puro (20 minutos) e até mesmo o Pandas (5 minutos) demandaram uma série de táticas para implementar o processamento em "lotes", enquanto bibliotecas como Dask, Polars e DuckDB provaram ser excepcionalmente eficazes, requerendo menos linhas de código devido à sua capacidade inerente de distribuir os dados em "lotes em streaming" de maneira mais eficiente. O DuckDB se sobressaiu, alcançando o menor tempo de execução graças à sua estratégia de execução e processamento de dados.
 
 Esses resultados enfatizam a importância de selecionar a ferramenta adequada para análise de dados em larga escala, demonstrando que Python, com as bibliotecas certas, é uma escolha poderosa para enfrentar desafios de big data.
 
@@ -86,7 +86,7 @@ Para executar este projeto e reproduzir os resultados:
 2. Execute o comando `python src/create_measurements.py` para gerar o arquivo de teste
 3. Tenha paciência e vá fazer um café, vai demorar uns 10 minutos para gerar o arquivo
 4. Certifique-se de instalar as versões especificadas das bibliotecas Dask, Polars e DuckDB
-5. Execute os scripts `python src/using_dask.py`, `python src/using_polars.py` e `python src/using_duckdb.py` através de um terminal ou ambiente de desenvolvimento que suporte Python.
+5. Execute os scripts `python src/using_python.py`, `python src/using_pandas.py`, `python src/using_dask.py`, `python src/using_polars.py` e `python src/using_duckdb.py` através de um terminal ou ambiente de desenvolvimento que suporte Python.
 
 Este projeto destaca a versatilidade do ecossistema Python para tarefas de processamento de dados, oferecendo valiosas lições sobre escolha de ferramentas para análises em grande escala.
 
