@@ -1,40 +1,21 @@
 from csv import reader
-from collections import defaultdict
+from collections import defaultdict, Counter
 import time
 
 def processar_temperaturas(path_do_csv):
-    print("Iniciando o processamento do arquivo.")
-    start_time = time.time()  # Tempo de início
-
-    temperatura_por_station = defaultdict(list)
-
-    """
-        Exemplo de como vai ficar a variável temperatura_por_station
-        temperatura_por_station = {
-            'Hamburg': [12.0],
-            'Bulawayo': [8.9],
-            'Palembang': [38.8],
-            'St. John\'s': [15.2],
-            'Cracow': [12.6],
-            'Bridgetown': [26.9],
-            'Istanbul': [6.2, 23.0], # Note que Istanbul tem duas entradas
-            'Roseau': [34.4],
-            'Conakry': [31.2],
-        }
-        O uso de defaultdict do módulo collections é uma escolha conveniente 
-        Sem o defaultdict, o código para adicionar uma temperatura iria parecer com isso:
-        if nome_da_station not in temperatura_por_station:
-            temperatura_por_station[nome_da_station] = []
-        temperatura_por_station[nome_da_station].append(temperatura)
-        Com defaultdict, isso é simplificado para:
-        temperatura_por_station[nome_da_station].append(temperatura)
-    """
+    minimas = defaultdict(lambda: 99.9)
+    maximas = defaultdict(lambda: -99.9)
+    somas = defaultdict(float)
+    medicoes = Counter()
 
     with open(path_do_csv, 'r') as file:
         _reader = reader(file, delimiter=';')
         for row in _reader:
             nome_da_station, temperatura = str(row[0]), float(row[1])
-            temperatura_por_station[nome_da_station].append(temperatura)
+            medicoes.update([nome_da_station])
+            minimas[nome_da_station] = min(minimas[nome_da_station], temperatura)
+            maximas[nome_da_station] = max(maximas[nome_da_station], temperatura)
+            somas[nome_da_station] += temperatura
 
     print("Dados carregados. Calculando estatísticas...")
 
@@ -42,29 +23,32 @@ def processar_temperaturas(path_do_csv):
     results = {}
 
     # Calculando min, média e max para cada estação
-    for station, temperatures in temperatura_por_station.items():
-        min_temp = min(temperatures)
-        mean_temp = sum(temperatures) / len(temperatures)
-        max_temp = max(temperatures)
-        results[station] = (min_temp, mean_temp, max_temp)
+    for station, qtd_medicoes in medicoes.items():
+        mean_temp = somas[station]/qtd_medicoes
+        results[station] = (minimas[station], mean_temp, maximas[station])
 
     print("Estatística calculada. Ordenando...")
     # Ordenando os resultados pelo nome da estação
     sorted_results = dict(sorted(results.items()))
 
     # Formatando os resultados para exibição
-    formatted_results = {station: f"{min_temp:.1f}/{mean_temp:.1f}/{max_temp:.1f}" for station, (min_temp, mean_temp, max_temp) in sorted_results.items()}
-
-    end_time = time.time()  # Tempo de término
-    print(f"Processamento concluído em {end_time - start_time:.2f} segundos.")
+    formatted_results = {station: f"{min_temp:.1f}/{mean_temp:.1f}/{max_temp:.1f}"
+                         for station, (min_temp, mean_temp, max_temp) in sorted_results.items()}
 
     return formatted_results
 
-# Substitua "data/measurements10M.txt" pelo caminho correto do seu arquivo
-if __name__ == "__main__":
 
-    # 1M 0.38 segundos
-    # 10M 3.96 segundos.
-    path_do_csv = "data/measurements100M.txt"
-    # 100M > 5 minutos.
+if __name__ == "__main__":
+    path_do_csv = "data/measurements.txt"
+
+    print("Iniciando o processamento do arquivo.")
+    start_time = time.time()  # Tempo de início
+
     resultados = processar_temperaturas(path_do_csv)
+
+    end_time = time.time()  # Tempo de término
+
+    for station, metrics in resultados.items():
+        print(station, metrics, sep=': ')
+
+    print(f"\nProcessamento concluído em {end_time - start_time:.2f} segundos.")
