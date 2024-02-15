@@ -42,7 +42,7 @@ def processar_temperaturas(path_do_csv):
 
 
 if __name__ == "__main__":
-    path_do_csv = "data/measurements1M.txt"
+    path_do_csv = "data/measurements.txt"
 
     print("Iniciando o processamento do arquivo.")
     start_time = time.time()  # Tempo de início
