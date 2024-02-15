@@ -65,11 +65,12 @@ Os testes foram realizados em um laptop equipado com um processador M1 da Apple 
 | --- | --- |
 | Python | Não rodou |
 | Python + Pandas | Não rodou |
+| Bash + awk | 25 minutos |
 | Python + Dask | 155.62 sec  |
 | Python + Polars | 33.86 sec |
 | Python + Duckdb | 14.98 sec |
 
-Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars
+Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars e [Arthur Julião](https://github.com/ArthurJ) pela implementação em Bash 
 
 ## Conclusão
 
@@ -84,10 +85,49 @@ Para executar este projeto e reproduzir os resultados:
 1. Clone esse repositório
 2. Execute o comando `python src/create_measurements.py` para gerar o arquivo de teste
 3. Tenha paciência e vá fazer um café, vai demorar uns 10 minutos para gerar o arquivo
-4. Certifique-se de instalar as versões especificadas das bibliotecas Polars e DuckDB
+4. Certifique-se de instalar as versões especificadas das bibliotecas Dask, Polars e DuckDB
 5. Execute os scripts `python src/using_dask.py`, `python src/using_polars.py` e `python src/using_duckdb.py` através de um terminal ou ambiente de desenvolvimento que suporte Python.
 
 Este projeto destaca a versatilidade do ecossistema Python para tarefas de processamento de dados, oferecendo valiosas lições sobre escolha de ferramentas para análises em grande escala.
+
+## Bonus
+
+Para rodar o script Bash descrito, você precisa seguir alguns passos simples. Primeiro, assegure-se de que você tenha um ambiente Unix-like, como Linux ou macOS, que suporta scripts Bash nativamente. Além disso, verifique se as ferramentas utilizadas no script (`wc`, `head`, `pv`, `awk`, e `sort`) estão instaladas em seu sistema. A maioria dessas ferramentas vem pré-instalada em sistemas Unix-like, mas `pv` (Pipe Viewer) pode precisar ser instalado manualmente.
+
+### Instalando o Pipe Viewer (pv)
+
+Se você não tem o `pv` instalado, pode facilmente instalá-lo usando o gerenciador de pacotes do seu sistema. Por exemplo:
+
+* No Ubuntu/Debian:
+    
+    ```bash
+    sudo apt-get update
+    sudo apt-get install pv
+    ```
+    
+* No macOS (usando [Homebrew](https://brew.sh/)):
+    
+    ```bash
+    brew install pv
+    ```
+    
+### Preparando o Script
+
+1. Dê permissão de execução para o arquivo script. Abra um terminal e execute:
+    
+    ```bash
+    chmod +x process_measurements.sh
+    ```
+
+2. Rode o script. Abra um terminal e execute:
+   
+   ```bash
+   ./src/using_bash_and_awk.sh 1000
+   ```
+
+Neste exemplo, apenas as primeiras 1000 linhas serão processadas.
+
+Ao executar o script, você verá a barra de progresso (se pv estiver instalado corretamente) e, eventualmente, a saída esperada no terminal ou em um arquivo de saída, se você decidir modificar o script para direcionar a saída.
 
 ## Próximos passos
 
