@@ -63,14 +63,14 @@ Os testes foram realizados em um laptop equipado com um processador M1 da Apple 
 
 | Implementação | Tempo |
 | --- | --- |
-| Python | Não rodou |
-| Python + Pandas | Não rodou |
 | Bash + awk | 25 minutos |
+| Python | 20 minutos |
+| Python + Pandas | 263 sec |
 | Python + Dask | 155.62 sec  |
 | Python + Polars | 33.86 sec |
 | Python + Duckdb | 14.98 sec |
 
-Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars e [Arthur Julião](https://github.com/ArthurJ) pela implementação em Bash 
+Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars e [Arthur Julião](https://github.com/ArthurJ) pela implementação em Python e Bash 
 
 ## Conclusão
 
