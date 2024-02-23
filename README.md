@@ -84,7 +84,7 @@ Para executar este projeto e reproduzir os resultados:
 
 1. Clone esse repositório
 2. Definir a versao do Python usando o `pyenv local 3.12.1`
-2. `poetry env use 3.12.1`, `poetry install --no-root` e `poetry lock --no-update`
+3. `poetry env use 3.12.1`, `poetry install --no-root` e `poetry lock --no-update`
 3. Execute o comando `python src/create_measurements.py` para gerar o arquivo de teste
 4. Tenha paciência e vá fazer um café, vai demorar uns 10 minutos para gerar o arquivo
 5. Certifique-se de instalar as versões especificadas das bibliotecas Dask, Polars e DuckDB
