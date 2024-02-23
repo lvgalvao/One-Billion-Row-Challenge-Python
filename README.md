@@ -78,6 +78,8 @@ Este desafio destacou claramente a eficácia de diversas bibliotecas Python na m
 
 Esses resultados enfatizam a importância de selecionar a ferramenta adequada para análise de dados em larga escala, demonstrando que Python, com as bibliotecas certas, é uma escolha poderosa para enfrentar desafios de big data.
 
+Duckdb vence tambem com 1 milhao de linhas, realmente é o melhor
+
 ## Como Executar
 
 Para executar este projeto e reproduzir os resultados:
