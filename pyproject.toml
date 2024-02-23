@@ -6,7 +6,7 @@ authors = ["Luciano Filho <lvgalvaofilho@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.12"
+python = "3.12.1"
 polars = "0.20.3"
 duckdb = "0.10.0"
 modin = {extras = ["dask"], version = "^0.27.0"}
