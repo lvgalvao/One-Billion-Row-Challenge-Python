@@ -22,7 +22,7 @@ def build_weather_station_name_list():
     """
     Grabs the weather station names from example data provided in repo and dedups
     """
-    station_names = []
+    station_names: list = []
     with open('./data/weather_stations.csv', 'r', encoding="utf-8") as file:
         file_contents = file.read()
     for station in file_contents.splitlines():
@@ -65,10 +65,10 @@ def estimate_file_size(weather_station_names, num_rows_to_create):
     """
     Tries to estimate how large a file the test data will be
     """
-    max_string = float('-inf')
-    min_string = float('inf')
-    per_record_size = 0
-    record_size_unit = "bytes"
+    max_string: float = float('-inf')
+    min_string: float = float('inf')
+    per_record_size: float = 0
+    record_size_unit: str = "bytes"
 
     for station in weather_station_names:
         if len(station) > max_string:
@@ -88,10 +88,10 @@ def build_test_data(weather_station_names, num_rows_to_create):
     Generates and writes to file the requested length of test data
     """
     start_time = time.time()
-    coldest_temp = -99.9
-    hottest_temp = 99.9
+    coldest_temp: float = -99.9
+    hottest_temp: float = 99.9
     station_names_10k_max = random.choices(weather_station_names, k=10_000)
-    batch_size = 10000 # instead of writing line by line to file, process a batch of stations and put it to disk
+    batch_size: int = 10000 # instead of writing line by line to file, process a batch of stations and put it to disk
     progress_step = max(1, (num_rows_to_create // batch_size) // 100)
     print('Criando o arquivo... isso vai demorar uns 10 minutos...')
 
@@ -123,8 +123,8 @@ def main():
     """
     main program function
     """
-    num_rows_to_create = 1000000
-    weather_station_names = []
+    num_rows_to_create: int = 1_000_000_000
+    weather_station_names: list = []
     weather_station_names = build_weather_station_name_list()
     print(estimate_file_size(weather_station_names, num_rows_to_create))
     build_test_data(weather_station_names, num_rows_to_create)

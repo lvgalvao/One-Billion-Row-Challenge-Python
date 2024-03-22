@@ -26,4 +26,4 @@ if __name__ == "__main__":
     df = create_polars_df()
     took = time.time() - start_time
     print(df)
-    print(f"Polars Took: {took:.2f} sec")
+    print(f"Processing with Polars took: {took:.2f} sec")
