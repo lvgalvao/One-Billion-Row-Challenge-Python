@@ -1,23 +1,33 @@
 import pandas as pd
 from multiprocessing import Pool, cpu_count
 from tqdm import tqdm  # importa o tqdm para barra de progresso
+import os
 
 CONCURRENCY = cpu_count()
 
 total_linhas = 1_000_000_000  # Total de linhas conhecido
 chunksize = 100_000_000  # Define o tamanho do chunk
-filename = "data/measurements.txt"  # Certifique-se de que este é o caminho correto para o arquivo
+filename = "../data/measurements.txt"  # Certifique-se de que este é o caminho correto para o arquivo
 
 def process_chunk(chunk):
     # Agrega os dados dentro do chunk usando Pandas
-    aggregated = chunk.groupby('station')['measure'].agg(['min', 'max', 'mean']).reset_index()
+    aggregated = (
+        chunk.groupby("station")["measure"].agg(["min", "max", "mean"]).reset_index()
+    )
     return aggregated
+
 
 def create_df_with_pandas(filename, total_linhas, chunksize=chunksize):
     total_chunks = total_linhas // chunksize + (1 if total_linhas % chunksize else 0)
     results = []
 
-    with pd.read_csv(filename, sep=';', header=None, names=['station', 'measure'], chunksize=chunksize) as reader:
+    with pd.read_csv(
+        filename,
+        sep=";",
+        header=None,
+        names=["station", "measure"],
+        chunksize=chunksize,
+    ) as reader:
         # Envolvendo o iterador com tqdm para visualizar o progresso
         with Pool(CONCURRENCY) as pool:
             for chunk in tqdm(reader, total=total_chunks, desc="Processando"):
@@ -29,13 +39,15 @@ def create_df_with_pandas(filename, total_linhas, chunksize=chunksize):
 
     final_df = pd.concat(results, ignore_index=True)
 
-    final_aggregated_df = final_df.groupby('station').agg({
-        'min': 'min',
-        'max': 'max',
-        'mean': 'mean'
-    }).reset_index().sort_values('station')
+    final_aggregated_df = (
+        final_df.groupby("station")
+        .agg({"min": "min", "max": "max", "mean": "mean"})
+        .reset_index()
+        .sort_values("station")
+    )
 
     return final_aggregated_df
+
 
 if __name__ == "__main__":
     import time
@@ -47,3 +59,16 @@ if __name__ == "__main__":
 
     print(df.head())
     print(f"Processing took: {took:.2f} sec")
+
+    # Define o caminho para o arquivo Parquet
+    parquet_file = "../data/measurements.parquet"
+
+    # Remove o arquivo Parquet se ele já existir
+    if os.path.exists(parquet_file):
+        os.remove(parquet_file)
+
+    # Salva o DataFrame em formato Parquet
+    df.to_parquet(parquet_file)
+
+    # Confirmação de conclusão
+    print("Arquivo Parquet criado com sucesso: ", parquet_file)
