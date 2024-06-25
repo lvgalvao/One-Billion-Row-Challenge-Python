@@ -13,7 +13,6 @@ def create_duckdb():
     """).show()
 
 if __name__ == "__main__":
-    import time
     start_time = time.time()
     create_duckdb()
     took = time.time() - start_time

@@ -2,7 +2,7 @@
 
 ## Introdução
 
-O objetivo deste projeto é demonstrar como processar eficientemente um arquivo de dados massivo contendo 1 bilhão de linhas (~14GB), especificamente para calcular estatísticas (Incluindo agregação e ordenação que são operações pesadas) utilizando Python. 
+O objetivo deste projeto é demonstrar como processar eficientemente um arquivo de dados massivo contendo 1 bilhão de linhas (~14GB), especificamente para calcular estatísticas (Incluindo agregação e ordenação que são operações pesadas) utilizando Python.
 
 Este desafio foi inspirado no [The One Billion Row Challenge](https://github.com/gunnarmorling/1brc), originalmente proposto para Java.
 
@@ -25,28 +25,28 @@ Istanbul;23.0
 
 O desafio é desenvolver um programa Python capaz de ler esse arquivo e calcular a temperatura mínima, média (arredondada para uma casa decimal) e máxima para cada estação, exibindo os resultados em uma tabela ordenada por nome da estação.
 
-| station      | min_temperature | mean_temperature | max_temperature |
-|--------------|-----------------|------------------|-----------------|
-| Abha         | -31.1           | 18.0             | 66.5            |
-| Abidjan      | -25.9           | 26.0             | 74.6            |
-| Abéché       | -19.8           | 29.4             | 79.9            |
-| Accra        | -24.8           | 26.4             | 76.3            |
-| Addis Ababa  | -31.8           | 16.0             | 63.9            |
-| Adelaide     | -31.8           | 17.3             | 71.5            |
-| Aden         | -19.6           | 29.1             | 78.3            |
-| Ahvaz        | -24.0           | 25.4             | 72.6            |
-| Albuquerque  | -35.0           | 14.0             | 61.9            |
-| Alexandra    | -40.1           | 11.0             | 67.9            |
-| ...          | ...             | ...              | ...             |
-| Yangon       | -23.6           | 27.5             | 77.3            |
+| station       | min_temperature | mean_temperature | max_temperature |
+| ------------- | --------------- | ---------------- | --------------- |
+| Abha          | -31.1           | 18.0             | 66.5            |
+| Abidjan       | -25.9           | 26.0             | 74.6            |
+| Abéché      | -19.8           | 29.4             | 79.9            |
+| Accra         | -24.8           | 26.4             | 76.3            |
+| Addis Ababa   | -31.8           | 16.0             | 63.9            |
+| Adelaide      | -31.8           | 17.3             | 71.5            |
+| Aden          | -19.6           | 29.1             | 78.3            |
+| Ahvaz         | -24.0           | 25.4             | 72.6            |
+| Albuquerque   | -35.0           | 14.0             | 61.9            |
+| Alexandra     | -40.1           | 11.0             | 67.9            |
+| ...           | ...             | ...              | ...             |
+| Yangon        | -23.6           | 27.5             | 77.3            |
 | Yaoundé      | -26.2           | 23.8             | 73.4            |
-| Yellowknife  | -53.4           | -4.3             | 46.7            |
-| Yerevan      | -38.6           | 12.4             | 62.8            |
-| Yinchuan     | -45.2           | 9.0              | 56.9            |
-| Zagreb       | -39.2           | 10.7             | 58.1            |
-| Zanzibar City| -26.5           | 26.0             | 75.2            |
+| Yellowknife   | -53.4           | -4.3             | 46.7            |
+| Yerevan       | -38.6           | 12.4             | 62.8            |
+| Yinchuan      | -45.2           | 9.0              | 56.9            |
+| Zagreb        | -39.2           | 10.7             | 58.1            |
+| Zanzibar City | -26.5           | 26.0             | 75.2            |
 | Zürich       | -42.0           | 9.3              | 63.6            |
-| Ürümqi       | -42.1           | 7.4              | 56.7            |
+| Ürümqi      | -42.1           | 7.4              | 56.7            |
 | İzmir        | -34.4           | 17.9             | 67.9            |
 
 ## Dependências
@@ -61,16 +61,16 @@ Para executar os scripts deste projeto, você precisará das seguintes bibliotec
 
 Os testes foram realizados em um laptop equipado com um processador M1 da Apple e 8GB de RAM. As implementações utilizaram abordagens puramente Python, Pandas, Dask, Polars e DuckDB. Os resultados de tempo de execução para processar o arquivo de 1 bilhão de linhas são apresentados abaixo:
 
-| Implementação | Tempo |
-| --- | --- |
-| Bash + awk | 25 minutos |
-| Python | 20 minutos |
-| Python + Pandas | 263 sec |
-| Python + Dask | 155.62 sec  |
-| Python + Polars | 33.86 sec |
-| Python + Duckdb | 14.98 sec |
+| Implementação | Tempo      |
+| --------------- | ---------- |
+| Bash + awk      | 25 minutos |
+| Python          | 20 minutos |
+| Python + Pandas | 263 sec    |
+| Python + Dask   | 155.62 sec |
+| Python + Polars | 33.86 sec  |
+| Python + Duckdb | 14.98 sec  |
 
-Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars e [Arthur Julião](https://github.com/ArthurJ) pela implementação em Python e Bash 
+Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars e [Arthur Julião](https://github.com/ArthurJ) pela implementação em Python e Bash
 
 ## Conclusão
 
@@ -86,11 +86,11 @@ Para executar este projeto e reproduzir os resultados:
 
 1. Clone esse repositório
 2. Definir a versao do Python usando o `pyenv local 3.12.1`
-2. `poetry env use 3.12.1`, `poetry install --no-root` e `poetry lock --no-update`
-3. Execute o comando `python src/create_measurements.py` para gerar o arquivo de teste
-4. Tenha paciência e vá fazer um café, vai demorar uns 10 minutos para gerar o arquivo
-5. Certifique-se de instalar as versões especificadas das bibliotecas Dask, Polars e DuckDB
-6. Execute os scripts `python src/using_python.py`, `python src/using_pandas.py`, `python src/using_dask.py`, `python src/using_polars.py` e `python src/using_duckdb.py` através de um terminal ou ambiente de desenvolvimento que suporte Python.
+3. `poetry env use 3.12.1`, `poetry install --no-root` e `poetry lock --no-update`
+4. Execute o comando `python src/create_measurements.py` para gerar o arquivo de teste
+5. Tenha paciência e vá fazer um café, vai demorar uns 10 minutos para gerar o arquivo
+6. Certifique-se de instalar as versões especificadas das bibliotecas Dask, Polars e DuckDB
+7. Execute os scripts `python src/using_python.py`, `python src/using_pandas.py`, `python src/using_dask.py`, `python src/using_polars.py` e `python src/using_duckdb.py` através de um terminal ou ambiente de desenvolvimento que suporte Python.
 
 Este projeto destaca a versatilidade do ecossistema Python para tarefas de processamento de dados, oferecendo valiosas lições sobre escolha de ferramentas para análises em grande escala.
 
@@ -103,28 +103,26 @@ Para rodar o script Bash descrito, você precisa seguir alguns passos simples. P
 Se você não tem o `pv` instalado, pode facilmente instalá-lo usando o gerenciador de pacotes do seu sistema. Por exemplo:
 
 * No Ubuntu/Debian:
-    
-    ```bash
-    sudo apt-get update
-    sudo apt-get install pv
-    ```
-    
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install pv
+  ```
 * No macOS (usando [Homebrew](https://brew.sh/)):
-    
-    ```bash
-    brew install pv
-    ```
-    
+
+  ```bash
+  brew install pv
+  ```
+
 ### Preparando o Script
 
 1. Dê permissão de execução para o arquivo script. Abra um terminal e execute:
-    
-    ```bash
-    chmod +x process_measurements.sh
-    ```
 
+   ```bash
+   chmod +x process_measurements.sh
+   ```
 2. Rode o script. Abra um terminal e execute:
-   
+
    ```bash
    ./src/using_bash_and_awk.sh 1000
    ```
