@@ -84,13 +84,16 @@ Duckdb vence tambem com 1 milhao de linhas, realmente é o melhor
 
 Para executar este projeto e reproduzir os resultados:
 
-1. Clone esse repositório
-2. Definir a versao do Python usando o `pyenv local 3.12.1`
-2. `poetry env use 3.12.1`, `poetry install --no-root` e `poetry lock --no-update`
-3. Execute o comando `python src/create_measurements.py` para gerar o arquivo de teste
-4. Tenha paciência e vá fazer um café, vai demorar uns 10 minutos para gerar o arquivo
-5. Certifique-se de instalar as versões especificadas das bibliotecas Dask, Polars e DuckDB
-6. Execute os scripts `python src/using_python.py`, `python src/using_pandas.py`, `python src/using_dask.py`, `python src/using_polars.py` e `python src/using_duckdb.py` através de um terminal ou ambiente de desenvolvimento que suporte Python.
+1. Clone esse repositório.
+2. Defina a versão do Python usando o `pyenv local 3.12.1`. Caso não tenha essa versão do pyenv, use o comando `pyenv install 3.12.1`.
+3. Em seguida use o comando `poetry env use 3.12.1`.
+4. Como o arquivo `pyproject.toml` já existe, não é necessário utilizar o comando `poetry init` e nem adicionar as bibliotecas manualmente.
+5. Para instalar as dependências utilize:  `poetry install --no-root` e `poetry lock --no-update`.
+6. Execute o comando `python src/create_measurements.py` para gerar o arquivo de teste.
+7. Tenha paciência e vá fazer um café, vai demorar uns 10 minutos para gerar o arquivo.
+8. Antes de rodar qualquer script, ative o ambiente virtual do poetry com o seguinte comando: `poetry shell`.
+9.  Execute os scripts `python src/using_python.py`, `python src/using_pandas.py`, `python src/using_dask.py`, `python src/using_polars.py` e `python src/using_duckdb.py` através de um terminal ou ambiente de desenvolvimento que suporte Python.
+10. Quando terminar de rodar os scripts, você pode sair do ambiente virtual digitando: `exit`.
 
 Este projeto destaca a versatilidade do ecossistema Python para tarefas de processamento de dados, oferecendo valiosas lições sobre escolha de ferramentas para análises em grande escala.
 
