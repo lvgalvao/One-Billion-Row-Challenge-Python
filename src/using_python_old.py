@@ -1,8 +1,8 @@
 from csv import reader
 from collections import defaultdict
+from pathlib import Path
 import time
 
-from pathlib import Path
 
 def processar_temperaturas(path_do_txt: Path):
     print("Iniciando o processamento do arquivo.")
