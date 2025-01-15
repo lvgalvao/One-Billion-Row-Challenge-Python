@@ -9,7 +9,7 @@ def create_polars_df():
     return (
         
         pl.scan_csv("data/measurements.txt", separator=";", has_header=False, new_columns=["station", "measure"], schema={"station": pl.String, "measure": pl.Float64})
-        .group_by(by="station")
+        .group_by("station")
         .agg(
             max = pl.col("measure").max(),
             min = pl.col("measure").min(),
