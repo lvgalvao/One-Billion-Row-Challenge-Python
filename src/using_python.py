@@ -56,6 +56,6 @@ if __name__ == "__main__":
         if i == 5:
             break
         print(station, metrics, sep=': ')
-    print("\n...")
+    print("...")
 
     print(f"\nProcessamento concluído em {end_time - start_time:.2f} segundos.")

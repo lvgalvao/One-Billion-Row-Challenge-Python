@@ -63,7 +63,7 @@ def processar_temperaturas(path_do_txt: Path):
         if i == 5:
             break
         print(f"{station}: {stats}")
-    print("\n...")
+    print("...")
 
     end_time = time.time()  # Tempo de término
     print(f"Processamento concluído em {end_time - start_time:.2f} segundos.")
