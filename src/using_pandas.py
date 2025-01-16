@@ -4,7 +4,7 @@ from tqdm import tqdm  # importa o tqdm para barra de progresso
 
 CONCURRENCY = cpu_count()
 
-total_linhas = 1_000_000_000  # Total de linhas conhecido
+total_linhas = 100_000_000  # Total de linhas conhecido
 chunksize = 100_000_000  # Define o tamanho do chunk
 filename = "data/measurements.txt"  # Certifique-se de que este é o caminho correto para o arquivo
 

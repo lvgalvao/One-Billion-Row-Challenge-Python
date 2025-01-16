@@ -3,7 +3,7 @@ from collections import defaultdict, Counter
 from tqdm import tqdm  # barra de progresso
 import time
 
-NUMERO_DE_LINHAS = 1_000_000_000
+NUMERO_DE_LINHAS = 100_000_000
 
 def processar_temperaturas(path_do_csv):
     # utilizando infinito positivo e negativo para comparar
@@ -51,7 +51,11 @@ if __name__ == "__main__":
 
     end_time = time.time()  # Tempo de término
 
-    for station, metrics in resultados.items():
+    # Exibindo apenas os 5 primeiros resultados
+    for i, (station, metrics) in enumerate(resultados.items()):
+        if i == 5:
+            break
         print(station, metrics, sep=': ')
+    print("...")
 
     print(f"\nProcessamento concluído em {end_time - start_time:.2f} segundos.")

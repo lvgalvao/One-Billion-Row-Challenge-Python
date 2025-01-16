@@ -1,8 +1,8 @@
 from csv import reader
 from collections import defaultdict
+from pathlib import Path
 import time
 
-from pathlib import Path
 
 def processar_temperaturas(path_do_txt: Path):
     print("Iniciando o processamento do arquivo.")
@@ -56,6 +56,14 @@ def processar_temperaturas(path_do_txt: Path):
 
     # Formatando os resultados para exibição
     formatted_results = {station: f"{min_temp:.1f}/{mean_temp:.1f}/{max_temp:.1f}" for station, (min_temp, mean_temp, max_temp) in sorted_results.items()}
+
+    # Exibindo apenas os 5 primeiros resultados
+    print("\nTabela de resultados (primeiros 5 registros):")
+    for i, (station, stats) in enumerate(formatted_results.items()):
+        if i == 5:
+            break
+        print(f"{station}: {stats}")
+    print("...")
 
     end_time = time.time()  # Tempo de término
     print(f"Processamento concluído em {end_time - start_time:.2f} segundos.")
