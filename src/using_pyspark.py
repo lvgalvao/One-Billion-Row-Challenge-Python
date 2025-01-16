@@ -2,6 +2,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 import time
 
+# Setei esses parâmetros para minha máquina
+# Linux 11, 32Gb de RAM, processador AMD® Ryzen 7 5700u with radeon graphics × 16 
 spark = SparkSession.builder \
     .appName("OneBillionRowChallenge") \
     .master("local[12]") \
@@ -36,12 +38,11 @@ if __name__ == "__main__":
 
     try:
         resultados = processar_temperaturas(file_path)
-        resultados.show(5)
-    
-    finally:
-        spark.stop()
 
         end_time = time.time() # Tempo de término
-    
-    print(f"\nProcessamento concluído em {end_time - start_time:.2f} segundos.")
 
+    finally:
+        spark.stop()
+    
+    print(resultados)
+    print(f"\nProcessamento concluído em {end_time - start_time:.2f} segundos.")
