@@ -13,6 +13,7 @@ modin = {extras = ["dask"], version = "^0.27.0"}
 dask = {extras = ["complete"], version = "^2024.2.0"}
 dask-expr = "^0.4.2"
 tqdm = "^4.66.2"
+python-dotenv = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core"]
