@@ -16,8 +16,8 @@ fi
 head -n $QTD data/measurements.txt | pv -p -e -t -l -s $QTD | awk -F ";" \
 '{
 	if (!($1 in cnts)){
-		mins[$1] = $2 
-		maxs[$1] = $2 
+		mins[$1] = $2
+		maxs[$1] = $2
 	}
 	else{
 		mins[$1] = $2<mins[$1] ? $2 : mins[$1]

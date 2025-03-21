@@ -2,7 +2,7 @@
 
 ## Introdução
 
-O objetivo deste projeto é demonstrar como processar eficientemente um arquivo de dados massivo contendo 1 bilhão de linhas (~14GB), especificamente para calcular estatísticas (Incluindo agregação e ordenação que são operações pesadas) utilizando Python. 
+O objetivo deste projeto é demonstrar como processar eficientemente um arquivo de dados massivo contendo 1 bilhão de linhas (~14GB), especificamente para calcular estatísticas (Incluindo agregação e ordenação que são operações pesadas) utilizando Python.
 
 Este desafio foi inspirado no [The One Billion Row Challenge](https://github.com/gunnarmorling/1brc), originalmente proposto para Java.
 
@@ -70,7 +70,7 @@ Os testes foram realizados em um laptop equipado com um processador M1 da Apple 
 | Python + Polars | 33.86 sec |
 | Python + Duckdb | 14.98 sec |
 
-Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars e [Arthur Julião](https://github.com/ArthurJ) pela implementação em Python e Bash 
+Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars e [Arthur Julião](https://github.com/ArthurJ) pela implementação em Python e Bash
 
 ## Conclusão
 
@@ -103,28 +103,28 @@ Para rodar o script Bash descrito, você precisa seguir alguns passos simples. P
 Se você não tem o `pv` instalado, pode facilmente instalá-lo usando o gerenciador de pacotes do seu sistema. Por exemplo:
 
 * No Ubuntu/Debian:
-    
+
     ```bash
     sudo apt-get update
     sudo apt-get install pv
     ```
-    
+
 * No macOS (usando [Homebrew](https://brew.sh/)):
-    
+
     ```bash
     brew install pv
     ```
-    
+
 ### Preparando o Script
 
 1. Dê permissão de execução para o arquivo script. Abra um terminal e execute:
-    
+
     ```bash
     chmod +x process_measurements.sh
     ```
 
 2. Rode o script. Abra um terminal e execute:
-   
+
    ```bash
    ./src/using_bash_and_awk.sh 1000
    ```
