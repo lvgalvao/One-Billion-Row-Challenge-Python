@@ -69,6 +69,7 @@ Os testes foram realizados em um laptop equipado com um processador M1 da Apple 
 | Python + Dask | 155.62 sec  |
 | Python + Polars | 33.86 sec |
 | Python + Duckdb | 14.98 sec |
+| Postgres     | 12 Minutos |
 
 Obrigado por [Koen Vossen](https://github.com/koenvo) pela implementação em Polars e [Arthur Julião](https://github.com/ArthurJ) pela implementação em Python e Bash 
 
