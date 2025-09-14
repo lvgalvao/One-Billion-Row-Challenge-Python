@@ -1,6 +1,7 @@
 import duckdb
 import time
 
+# Processa dados meteorólogicos de um arquivo CSV calculando estatisticasde temperatura para cada estação meteorólogica.
 def create_duckdb():
     duckdb.sql("""
         SELECT station,
@@ -11,10 +12,11 @@ def create_duckdb():
         GROUP BY station
         ORDER BY station
     """).show()
-
+    
+# Executa a análise de dados meteorologicos e mede o tempo de processamento do DuckDB exibindo o resultado final.
 if __name__ == "__main__":
     import time
     start_time = time.time()
     create_duckdb()
     took = time.time() - start_time
-    print(f"Duckdb Took: {took:.2f} sec")
+    print(f"Duckdb processing time: {took:.2f} seconds")
