@@ -12,7 +12,7 @@ def processar_temperaturas(path_do_csv):
     somas = defaultdict(float)
     medicoes = Counter()
 
-    with open(path_do_csv, 'r') as file:
+    with open(path_do_csv, 'r', encoding='utf-8') as file:
         _reader = reader(file, delimiter=';')
         # usando tqdm diretamente no iterador, isso mostrará a porcentagem de conclusão.
         for row in tqdm(_reader, total=NUMERO_DE_LINHAS, desc="Processando"):
