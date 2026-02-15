@@ -1,0 +1,3 @@
+[submodule "One-Billion-Row-Challenge-Python"]
+	path = One-Billion-Row-Challenge-Python
+	url = git@github.com:madsoncordeiro/One-Billion-Row-Challenge-Python.git
