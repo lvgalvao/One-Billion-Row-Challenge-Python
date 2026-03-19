@@ -2,6 +2,7 @@ import os
 import sys
 import random
 import time
+import config
 
 
 def check_args(file_args):
@@ -23,7 +24,7 @@ def build_weather_station_name_list():
     Grabs the weather station names from example data provided in repo and dedups
     """
     station_names = []
-    with open('./data/weather_stations.csv', 'r', encoding="utf-8") as file:
+    with open('./data/weather_stations.csv', 'r', encoding=config.ENCODING) as file:
         file_contents = file.read()
     for station in file_contents.splitlines():
         if "#" in station:
@@ -96,7 +97,7 @@ def build_test_data(weather_station_names, num_rows_to_create):
     print('Criando o arquivo... isso vai demorar uns 10 minutos...')
 
     try:
-        with open("./data/measurements.txt", 'w', encoding="utf-8") as file:
+        with open(config.FOLDER_PATH, 'w', encoding=config.ENCODING) as file:
             for s in range(0,num_rows_to_create // batch_size):
                 
                 batch = random.choices(station_names_10k_max, k=batch_size)
@@ -111,10 +112,10 @@ def build_test_data(weather_station_names, num_rows_to_create):
     
     end_time = time.time()
     elapsed_time = end_time - start_time
-    file_size = os.path.getsize("./data/measurements.txt")
+    file_size = os.path.getsize(config.FOLDER_PATH)
     human_file_size = convert_bytes(file_size)
  
-    print("Arquivo escrito com sucesso data/measurements.txt")
+    print(f"Arquivo escrito com sucesso {config.FOLDER_PATH}")
     print(f"Tamanho final:  {human_file_size}")
     print(f"Tempo decorrido: {format_elapsed_time(elapsed_time)}")
 
@@ -123,7 +124,7 @@ def main():
     """
     main program function
     """
-    num_rows_to_create = 1000000
+    num_rows_to_create = config.NUMERO_DE_LINHAS
     weather_station_names = []
     weather_station_names = build_weather_station_name_list()
     print(estimate_file_size(weather_station_names, num_rows_to_create))

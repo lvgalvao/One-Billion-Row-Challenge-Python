@@ -1,11 +1,12 @@
 import dask
 import dask.dataframe as dd
+import config
 
 def create_dask_df():
     dask.config.set({'dataframe.query-planning': True})
     # Configurando o Dask DataFrame para ler o arquivo CSV
     # Como o arquivo não tem cabeçalho, especificamos os nomes das colunas manualmente
-    df = dd.read_csv("data/measurements.txt", sep=";", header=None, names=["station", "measure"])
+    df = dd.read_csv(config.FOLDER_PATH, sep=";", header=None, names=["station", "measure"])
     
     # Agrupando por 'station' e calculando o máximo, mínimo e média de 'measure'
     # O Dask realiza operações de forma lazy, então esta parte apenas define o cálculo

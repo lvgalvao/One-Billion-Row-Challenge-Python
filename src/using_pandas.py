@@ -1,12 +1,13 @@
 import pandas as pd
 from multiprocessing import Pool, cpu_count
 from tqdm import tqdm  # importa o tqdm para barra de progresso
+import config
 
 CONCURRENCY = cpu_count()
 
-total_linhas = 1_000_000_000  # Total de linhas conhecido
+total_linhas = config.NUMERO_DE_LINHAS  # Total de linhas conhecido
 chunksize = 100_000_000  # Define o tamanho do chunk
-filename = "data/measurements.txt"  # Certifique-se de que este é o caminho correto para o arquivo
+filename = config.FOLDER_PATH  # Certifique-se de que este é o caminho correto para o arquivo
 
 def process_chunk(chunk):
     # Agrega os dados dentro do chunk usando Pandas
@@ -17,7 +18,7 @@ def create_df_with_pandas(filename, total_linhas, chunksize=chunksize):
     total_chunks = total_linhas // chunksize + (1 if total_linhas % chunksize else 0)
     results = []
 
-    with pd.read_csv(filename, sep=';', header=None, names=['station', 'measure'], chunksize=chunksize) as reader:
+    with pd.read_csv(filename, sep=';', header=None, names=['station', 'measure'], chunksize=chunksize, encoding=config.ENCODING) as reader:
         # Envolvendo o iterador com tqdm para visualizar o progresso
         with Pool(CONCURRENCY) as pool:
             for chunk in tqdm(reader, total=total_chunks, desc="Processando"):

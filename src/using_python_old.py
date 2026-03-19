@@ -1,6 +1,7 @@
 from csv import reader
 from collections import defaultdict
 import time
+import config
 
 from pathlib import Path
 
@@ -32,7 +33,7 @@ def processar_temperaturas(path_do_txt: Path):
         temperatura_por_station[nome_da_station].append(temperatura)
     """
 
-    with open(path_do_txt, 'r', encoding="utf-8") as file:
+    with open(path_do_txt, 'r', encoding=config.ENCODING) as file:
         _reader = reader(file, delimiter=';')
         for row in _reader:
             nome_da_station, temperatura = str(row[0]), float(row[1])
@@ -67,6 +68,6 @@ if __name__ == "__main__":
 
     # 1M 0.38 segundos
     # 10M 3.96 segundos.
-    path_do_txt: Path = Path("data/measurements.txt")
+    path_do_txt: Path = Path(config.FOLDER_PATH)
     # 100M > 5 minutos.
     resultados = processar_temperaturas(path_do_txt)
