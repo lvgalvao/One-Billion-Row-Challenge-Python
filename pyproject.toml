@@ -1,19 +1,14 @@
-[tool.poetry]
-name = "one-billion-row-challenge-python"
+[project]
+name = "projeto-1"
 version = "0.1.0"
-description = ""
-authors = ["Luciano Filho <lvgalvaofilho@gmail.com>"]
+description = "Projeto com uv"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "3.12.1"
-polars = "0.20.3"
-duckdb = "0.10.0"
-modin = {extras = ["dask"], version = "^0.27.0"}
-dask = {extras = ["complete"], version = "^2024.2.0"}
-dask-expr = "^0.4.2"
-tqdm = "^4.66.2"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.12.1"
+dependencies = [
+    "dask-expr==0.4.2",
+    "dask[complete]==2024.2.0",
+    "duckdb==0.10.0",
+    "modin[dask]==0.27.0",
+    "polars==0.20.3",
+    "tqdm==4.66.2",
+]
