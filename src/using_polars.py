@@ -1,4 +1,6 @@
 import polars as pl
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 
 # Created by Koen Vossen, 
 # Github: https://github.com/koenvo

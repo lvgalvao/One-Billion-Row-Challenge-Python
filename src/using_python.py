@@ -1,34 +1,45 @@
 from csv import reader
-from collections import defaultdict, Counter
+from collections import defaultdict
 from tqdm import tqdm  # barra de progresso
 import time
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
 NUMERO_DE_LINHAS = 1_000_000_000
 
 def processar_temperaturas(path_do_csv):
     # utilizando infinito positivo e negativo para comparar
-    minimas = defaultdict(lambda: float('inf'))
-    maximas = defaultdict(lambda: float('-inf'))
-    somas = defaultdict(float)
-    medicoes = Counter()
+    estatisticas = defaultdict(
+    lambda: [float('inf'), float('-inf'), 0, 0]
+)
 
-    with open(path_do_csv, 'r') as file:
+    with open(path_do_csv, 'r', encoding='utf-8') as file:
         _reader = reader(file, delimiter=';')
         # usando tqdm diretamente no iterador, isso mostrará a porcentagem de conclusão.
         for row in tqdm(_reader, total=NUMERO_DE_LINHAS, desc="Processando"):
-            nome_da_station, temperatura = str(row[0]), float(row[1])
-            medicoes.update([nome_da_station])
-            minimas[nome_da_station] = min(minimas[nome_da_station], temperatura)
-            maximas[nome_da_station] = max(maximas[nome_da_station], temperatura)
-            somas[nome_da_station] += temperatura
+            nome_da_station, temperatura = row[0], float(row[1])
+
+            dados = estatisticas[nome_da_station]
+
+            dados[0] = min(dados[0], temperatura)
+            dados[1] = max(dados[1], temperatura)
+            dados[2] += temperatura
+            dados[3] += 1
 
     print("Dados carregados. Calculando estatísticas...")
 
     # calculando min, média e max para cada estação
     results = {}
-    for station, qtd_medicoes in medicoes.items():
-        mean_temp = somas[station] / qtd_medicoes
-        results[station] = (minimas[station], mean_temp, maximas[station])
+    for station, dados in estatisticas.items():
+        minimo, maximo, soma, quantidade = dados
+
+        mean_temp = soma / quantidade
+
+        results[station] = (
+            minimo,
+            mean_temp,
+            maximo
+        )
 
     print("Estatística calculada. Ordenando...")
     # ordenando os resultados pelo nome da estação

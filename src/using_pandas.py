@@ -37,11 +37,13 @@ Dependências:
 import pandas as pd
 from multiprocessing import Pool, cpu_count
 import time
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 
 # --- Constantes de Configuração ---
 
 # Define o caminho para o arquivo de dados.
-FILENAME = "One-Billion-Row-Challenge-Python/data/measurements.txt"
+FILENAME = "data/measurements.txt"
 
 # Define o tamanho de cada "pedaço" do arquivo a ser lido na memória.
 # Ajuste este valor dependendo da memória RAM disponível.
